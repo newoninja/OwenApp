@@ -1,10 +1,10 @@
 [build]
-  # This is the new line. It forces the Python build environment to execute.
-  command = "echo 'Netlify build complete'" 
+  # This simple command is necessary to kickstart the build process
+  command = "echo 'Build Complete'" 
   publish = "/"
-  
+
 [functions]
-  # This confirms the folder where Netlify looks for your Python function
+  # This tells Netlify where to find the Python code
   directory = "netlify-functions"
 
 [[redirects]]
