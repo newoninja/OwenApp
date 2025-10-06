@@ -1,0 +1,97 @@
+/* Custom styles for the futuristic/minimalist aesthetic */
+:root {
+    --color-primary: #1e3a8a; /* Deep Indigo */
+    --color-accent: #00e0ff; /* Electric Cyan */
+    --color-dark: #0f172a; /* Slate 900 */
+}
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--color-dark);
+    color: #e2e8f0;
+}
+.accent-shadow {
+    box-shadow: 0 0 15px rgba(0, 224, 255, 0.5);
+}
+.container {
+    max-width: 1280px;
+}
+/* Parallax effect applied to the hero-gradient background */
+.hero-gradient {
+    background-image: radial-gradient(circle at top left, rgba(30, 58, 138, 0.4) 0%, transparent 50%), 
+                      linear-gradient(rgba(15, 23, 42, 1), rgba(15, 23, 42, 1));
+    /* This is the key for the subtle parallax scroll effect */
+    background-attachment: fixed; 
+}
+.card {
+    background-color: #1e293b; /* Slate 800 */
+    border: 1px solid #334155; /* Slate 700 */
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 20px rgba(0, 224, 255, 0.1);
+    cursor: pointer; /* Add pointer for clickable cards */
+}
+.btn-primary {
+    background-color: var(--color-accent);
+    color: var(--color-dark);
+    font-weight: 700;
+    transition: background-color 0.3s, transform 0.1s;
+}
+.btn-primary:hover {
+    background-color: #00c0ff;
+    transform: translateY(-1px);
+}
+/* Sticky Header Styles for transition */
+.fixed-header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 50; /* Ensure it stays above content */
+    transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out, border-bottom 0.3s;
+}
+.scrolled-header {
+    background-color: #1e293b; /* Slightly darker background on scroll */
+    box-shadow: 4px 12px rgba(0, 0, 0, 0.4); /* Add drop shadow */
+    border-bottom: 1px solid transparent; /* Remove initial border when scrolled */
+}
+/* Custom scrollbar for subtle effect */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-thumb { background: var(--color-accent); border-radius: 10px; }
+::-webkit-scrollbar-track { background: var(--color-dark); }
+
+/* Styling for the Roadmap List */
+.roadmap-list {
+    counter-reset: step-counter;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.roadmap-list li {
+    counter-increment: step-counter;
+    margin-bottom: 1rem;
+    padding-left: 3rem;
+    position: relative;
+    text-align: left;
+}
+.roadmap-list li::before {
+    content: counter(step-counter);
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 2.5rem;
+    width: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-accent);
+    color: var(--color-dark);
+    font-weight: bold;
+    border-radius: 50%;
+    font-size: 1.25rem;
+    box-shadow: 0 0 10px rgba(0, 224, 255, 0.7);
+}
+/* Simple transition for inline expansion */
+.skill-details.hidden {
+    display: none;
+}
