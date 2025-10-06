@@ -1,10 +1,8 @@
 [build]
-  # This simple command is necessary to kickstart the build process
   command = "echo 'Build Complete'" 
-  publish = "/"
-
+  publish = "/" 
+  
 [functions]
-  # This tells Netlify where to find the Python code
   directory = "netlify-functions"
 
 [[redirects]]
