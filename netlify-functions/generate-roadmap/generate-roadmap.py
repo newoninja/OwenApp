@@ -3,19 +3,20 @@ import os
 from google import genai
 from google.genai import types
 
-# The client automatically reads the GEMINI_API_KEY from Netlify's Environment Variables
+# --- GLOBAL DEFINITIONS (NO INDENTATION) ---
+# The client is initialized once globally.
 client = genai.Client()
 
 SYSTEM_PROMPT = "You are a strategic AI Automation Consultant. The user provides a business context and a problem. Your task is to generate a concise, three-step automation plan (using AI/Code/APIs) that directly solves their stated problem, focusing on minimizing human error and maximizing efficiency. Output ONLY a JSON array containing three strings, where each string is one step of the roadmap. Do NOT include any introductory or concluding text outside the JSON array."
 
+
+# --- HANDLER FUNCTION (START OF EXECUTION) ---
 def handler(event, context):
- print("DEBUG: API Key Check:", os.environ.get('GEMINI_API_KEY') is not None) 
-    # ... rest of your code ...
-    """
-    This is the standard entry point for a Netlify Function.
-    """
+    # DEBUG LINE (Indented once)
+    print("DEBUG: API Key Check:", os.environ.get('GEMINI_API_KEY') is not None) 
+    
     try:
-        # 1. Parse the request body coming from the app.js fetch call
+        # 1. Parse the request body (Indented twice, inside try block)
         data = json.loads(event['body'])
         business = data.get('business', '')
         problem = data.get('problem', '')
@@ -28,7 +29,7 @@ def handler(event, context):
 
         query = f"Business/Industry: {business}. Key Problem: {problem}."
         
-        # 2. Configure the Gemini API call for structured JSON output
+        # 2. Configure the Gemini API call
         config = types.GenerateContentConfig(
             system_instruction=SYSTEM_PROMPT,
             response_mime_type="application/json",
@@ -53,7 +54,10 @@ def handler(event, context):
         }
 
     except Exception as e:
+        # Log the error in the Netlify dashboard
         print(f"Error during roadmap generation: {e}")
+        
+        # Return a generic 500 status to the browser
         return {
             'statusCode': 500,
             'body': json.dumps({"error": "An internal server error occurred."})
