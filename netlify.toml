@@ -1,9 +1,11 @@
 [build]
-  # 1. Tells Netlify that your serverless functions are located in the 'netlify-functions' folder.
-  functions = "netlify-functions"
+  # This ensures your static files (HTML, CSS) are published from the root
+  publish = "/"
+  
+# This is the essential part that tells Netlify where to find the Python code
+[functions]
+  directory = "netlify-functions"
 
-# 2. Sets up the redirect/clean URL for your JavaScript.
-#    When your app.js calls /api/generate-roadmap, Netlify silently redirects it to the actual function path.
 [[redirects]]
   from = "/api/generate-roadmap"
   to = "/.netlify/functions/generate-roadmap"
