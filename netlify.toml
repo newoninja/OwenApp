@@ -1,9 +1,10 @@
 [build]
-  # This ensures your static files (HTML, CSS) are published from the root
+  # This is the new line. It forces the Python build environment to execute.
+  command = "echo 'Netlify build complete'" 
   publish = "/"
   
-# This is the essential part that tells Netlify where to find the Python code
 [functions]
+  # This confirms the folder where Netlify looks for your Python function
   directory = "netlify-functions"
 
 [[redirects]]
